@@ -1,0 +1,8 @@
+#!/bin/sh
+
+vim main.cpp 
+g++ -o exe main.cpp -I/usr/include/opencv2/ -I /usr//include/poppler/cpp -lpoppler-cpp -lopencv_core -lopencv_highgui
+
+if [ $? = 0 ]; then 
+	./exe
+fi
