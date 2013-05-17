@@ -38,6 +38,6 @@ void print_byte_vector(vector<char> v)
 {
 	for (int i = 0; i<v.size(); i++) 
 	{
-		cout << v[i]; 
+		cout << v[i];
 	}
 }

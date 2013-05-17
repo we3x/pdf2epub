@@ -26,6 +26,7 @@
 
 #include "document.hpp"
 
+
 using namespace cv; 
 using namespace std;
 
@@ -55,7 +56,20 @@ Mat DocumentPage::img()
 
 vector<char> DocumentPage::text(MatPart part) 
 {
-	return _page->text(poppler::rectf(part.x, part.y, part.width, part.height), poppler::page::physical_layout).to_utf8();
+	poppler::ustring utxt = _page->text(poppler::rectf(part.x,part.y,part.width,part.height), poppler::page::physical_layout);
+	vector<char> utf8arr = utxt.to_utf8();
+	string asciiarr = utxt.to_latin1();
+	int i = 0; 
+	while (asciiarr[i] != '\0') i++;
+	if (utf8arr.at(utf8arr.size() - 1) == '\0') utf8arr.erase(utf8arr.end()-1);
+	for (i; i<asciiarr.size(); i++) 
+	{
+		if (asciiarr[i] != '\0') 
+		{
+			utf8arr.push_back(asciiarr[i]);
+		}
+	}
+	return utf8arr; 
 }
 
 poppler::page* DocumentPage::popplerDocumentPage() 

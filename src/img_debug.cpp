@@ -68,7 +68,7 @@ void showPartAsRect(Mat img, MatPart part, string wn, DocumentPage* p)
 	}
 	rectangle(img, Point(part.x, part.y), Point(part.x + part.width, part.y + part.height), Scalar(0), 2);
 	imshow(wn, img);
-	cout << avgRowSize(part) << endl;
+	/* debug */ cout << avgRowSize(part) << endl;
 	waitKey(0);
 }
 
