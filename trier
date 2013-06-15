@@ -1,7 +1,0 @@
-#!/bin/sh
-
-g++ -o exe src/*.cpp -I/usr/include/opencv2/ -I /usr//include/poppler/cpp -lpoppler-cpp -lopencv_core -lopencv_highgui -g
-
-if [ $? = 0 ]; then 
-	./exe
-fi
